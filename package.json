@@ -1,0 +1,25 @@
+{
+  "name": "absolute-glob",
+  "version": "0.0.0",
+  "description": "Make a glob pattern absolute and unixify it",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "keywords": [
+    "glob",
+    "absolute",
+    "unixify"
+  ],
+  "author": "Vincent Weevers (http://vincentweevers.nl)",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "~3.0.3"
+  },
+  "repository": "git://github.com/vweevers/absolute-glob",
+  "bugs": "https://github.com/vweevers/absolute-glob/issues",
+  "homepage": "https://github.com/vweevers/absolute-glob",
+  "dependencies": {
+    "unixify": "~0.1.0"
+  }
+}

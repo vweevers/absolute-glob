@@ -1,0 +1,28 @@
+var test = require('tape')
+  , absolute = require('./')
+
+test('positive', function(t){
+  t.equal(absolute(), '/', 'empty')
+  t.equal(absolute('foo'), '/foo', 'makes absolute')
+  t.equal(absolute('/foo/bar/*/baz'), '/foo/bar/*/baz', 'absolute input stays the same')
+  t.equal(absolute('\\foo/bar'), '/foo/bar', 'unixifies')
+  t.equal(absolute('C:\\**'), '/**', 'unixifies c drive')
+  t.equal(absolute('foo/'), '/foo/', 'does not touch leading slash')
+  t.equal(absolute('**'), '/**', 'globstar')
+  t.equal(absolute('*'), '/*', 'star')
+  t.equal(absolute('*/foo|.bar\\*.{js, css}'), '/*/foo|.bar/*.{js, css}', 'complex pattern')
+  t.end()
+})
+
+test('negative', function(t){
+  t.equal(absolute('!'), '!/', 'empty')
+  t.equal(absolute('!foo'), '!/foo', 'makes absolute')
+  t.equal(absolute('!/foo/bar/*/baz'), '!/foo/bar/*/baz', 'absolute input stays the same')
+  t.equal(absolute('!\\foo/bar'), '!/foo/bar', 'unixifies')
+  t.equal(absolute('!C:\\**'), '!/**', 'unixifies c drive')
+  t.equal(absolute('!foo/'), '!/foo/', 'does not touch leading slash')
+  t.equal(absolute('!**'), '!/**', 'globstar')
+  t.equal(absolute('!*'), '!/*', 'star')
+  t.equal(absolute('!*/foo|.bar\\*.{js, css}'), '!/*/foo|.bar/*.{js, css}', 'complex pattern')
+  t.end()
+})
