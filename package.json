@@ -1,6 +1,6 @@
 {
   "name": "absolute-glob",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Make a glob pattern absolute and unixify it",
   "main": "index.js",
   "scripts": {
